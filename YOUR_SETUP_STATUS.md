@@ -22,9 +22,10 @@ All dependencies are satisfied and configured for your system.
 - ✅ **All EvoAgentX modules** (evaluator_v2, bandit, etc.)
 
 ### LLM Models
-- ✅ **deepseek-r1:32b** (19 GB) - ⭐ **EVEN BETTER than the 14b specified!**
+- ✅ **deepseek-r1:14b** (9.0 GB) - ⭐ **OPTIMAL for performance** (32b too large)
 - ✅ **qwen2.5-coder:7b** (4.7 GB) - For coding tasks
 - ✅ **qwen3:8b** (5.2 GB) - Bonus model available
+- ℹ️ **deepseek-r1:32b** (19 GB) - Present but NOT used (times out)
 
 ### GUI Dependencies
 - ✅ **React 18.3.1** - UI framework
@@ -205,12 +206,13 @@ Once the GUI opens:
 
 ### Models (Configured for Your System)
 ```yaml
-reasoning: deepseek-r1:32b    # Your 19GB model
-coding: qwen2.5-coder:7b      # Your 4.7GB model
+reasoning: deepseek-r1:14b    # 9GB model - OPTIMAL (32b too large)
+coding: qwen2.5-coder:7b      # 4.7GB model
 ```
 
-**Total Model Size**: ~24GB on disk
-**Runtime RAM**: ~6GB for 7b model, ~12GB for 32b model
+**Total Model Size**: ~14GB on disk (14b + 7b)
+**Runtime RAM**: ~3GB for 7b model, ~6GB for 14b model
+**32b model**: Present but NOT used (too large, causes timeouts)
 
 ### Resource Limits
 ```yaml
