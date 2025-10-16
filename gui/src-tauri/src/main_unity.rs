@@ -147,7 +147,7 @@ fn spawn_sidecar(
         cmd = cmd.args([*a]);
     }
 
-    let (rx, child) = cmd.spawn()?;
+    let (mut rx, child) = cmd.spawn()?;
     let app_handle = app.clone();
     let bin_name = bin.to_string();
 
