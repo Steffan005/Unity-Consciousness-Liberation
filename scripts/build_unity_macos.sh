@@ -44,12 +44,23 @@ echo ""
 echo "[Unity] Step 2/7: Freezing Python backend with PyInstaller..."
 cd "${BACKEND_DIR}"
 
-# Activate virtual environment (exists at ../venv)
-VENV_PATH="${REPO_ROOT}/../venv"
-if [ ! -d "$VENV_PATH" ]; then
-    echo "   ⚠️  Virtual environment not found at $VENV_PATH"
-    echo "   Creating new venv..."
+# Find or create virtual environment (try multiple locations)
+VENV_PATH=""
+
+# Try location 1: repo/venv
+if [ -d "${REPO_ROOT}/venv" ]; then
+    VENV_PATH="${REPO_ROOT}/venv"
+    echo "   Found venv at: ${VENV_PATH}"
+# Try location 2: parent/venv (original location)
+elif [ -d "${REPO_ROOT}/../venv" ]; then
+    VENV_PATH="${REPO_ROOT}/../venv"
+    echo "   Found venv at: ${VENV_PATH}"
+# Create new venv in repo directory
+else
+    VENV_PATH="${REPO_ROOT}/venv"
+    echo "   Creating new venv at: ${VENV_PATH}..."
     python3 -m venv "$VENV_PATH"
+    echo "   ✅ Virtual environment created"
 fi
 
 echo "   Activating venv: $VENV_PATH"
