@@ -588,13 +588,13 @@ fn main() {
             println!("[Unity] Setup: Spawning sidecars...");
 
             // 1) Start Ollama server
-            match spawn_sidecar(&app.handle(), "ollama", &["serve"]) {
+            match spawn_sidecar(&app.handle(), "binaries/ollama", &["serve"]) {
                 Ok(_child) => println!("[Unity] Ollama sidecar spawned successfully"),
                 Err(e) => eprintln!("[Unity] Failed to spawn Ollama: {}", e),
             }
 
             // 2) Start Python backend
-            match spawn_sidecar(&app.handle(), "python_backend", &[]) {
+            match spawn_sidecar(&app.handle(), "binaries/python_backend", &[]) {
                 Ok(_child) => println!("[Unity] Python backend sidecar spawned successfully"),
                 Err(e) => eprintln!("[Unity] Failed to spawn Python backend: {}", e),
             }
