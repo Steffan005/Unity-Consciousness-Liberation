@@ -1,5 +1,5 @@
 // Main Dashboard Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StatusBar } from '../components/StatusBar';
 import { Controls } from '../components/Controls';
 import { Canvas } from '../components/Canvas';

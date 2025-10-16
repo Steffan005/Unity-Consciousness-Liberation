@@ -1,5 +1,5 @@
 // Canvas Component - Fractal Visualization
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api, WorkflowDAG } from '../lib/api';
 
 export function Canvas() {

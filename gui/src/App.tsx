@@ -4,17 +4,13 @@ import { api } from "./lib/api";
 import "./App.css";
 
 function App() {
-  const [isReady, setIsReady] = useState(false);
-
   useEffect(() => {
     // Run initial preflight check
     const checkPreflight = async () => {
       try {
-        const passed = await api.isPreflightPassed();
-        setIsReady(passed);
+        await api.isPreflightPassed();
       } catch (err) {
         console.error("Preflight check failed:", err);
-        setIsReady(false);
       }
     };
 

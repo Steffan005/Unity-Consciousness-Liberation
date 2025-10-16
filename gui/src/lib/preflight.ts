@@ -108,11 +108,7 @@ export async function checkPreflightStatus(): Promise<PreflightStatus> {
  * Listen to Unity events from Rust sidecars
  * Returns cleanup function to remove listeners
  */
-export function listenToUnityEvents(
-  onReady?: () => void,
-  onWarn?: (msg: string) => void,
-  onError?: (msg: string) => void
-): () => void {
+export function listenToUnityEvents(): () => void {
   // This would use Tauri event listeners if available
   // For now, return a no-op cleanup
   console.log('[Unity] Event listeners registered (stub)');

@@ -1,5 +1,5 @@
 // Controls Component - Main action buttons
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { api, DiagnosticsResult } from '../lib/api';
 
 interface ControlsProps {

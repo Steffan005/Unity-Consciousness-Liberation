@@ -1,5 +1,5 @@
 // StatusBar Component - Displays real-time telemetry
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api, TelemetryMetrics } from '../lib/api';
 
 export function StatusBar() {
