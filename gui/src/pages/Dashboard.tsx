@@ -6,7 +6,7 @@ import { Canvas } from '../components/Canvas';
 import { api } from '../lib/api';
 
 export function Dashboard() {
-  const [console Logs, setConsoleLogs] = useState<Array<{ message: string; level: string }>>([
+  const [consoleLogs, setConsoleLogs] = useState<Array<{ message: string; level: string }>>([
     { message: 'EvoAgentX GUI initialized', level: 'info' },
     { message: 'Waiting for diagnostics...', level: 'info' },
   ]);
