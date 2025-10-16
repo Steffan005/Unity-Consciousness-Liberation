@@ -1,68 +1,73 @@
 {
-  "productName": "Unity",
-  "version": "1.0.0",
-  "identifier": "ai.unity.local",
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
     "beforeDevCommand": "pnpm dev",
-    "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "pnpm build",
-    "frontendDist": "../dist"
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
   },
-  "bundle": {
-    "active": true,
-    "targets": "all",
-    "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
-    ],
-    "externalBin": [
-      "binaries/python_backend",
-      "binaries/ollama"
-    ],
-    "resources": {
-      "resources/*": "./"
-    }
+  "package": {
+    "productName": "Unity",
+    "version": "1.0.0"
   },
-  "app": {
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true,
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "binaries/python_backend",
+            "sidecar": true
+          },
+          {
+            "name": "binaries/ollama",
+            "sidecar": true,
+            "args": ["serve"]
+          }
+        ]
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
+          }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "ai.unity.local",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "externalBin": [
+        "binaries/python_backend",
+        "binaries/ollama"
+      ],
+      "resources": [
+        "resources/*"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
     "windows": [
       {
+        "fullscreen": false,
+        "resizable": true,
         "title": "Unity — Quantum Evolution Interface",
         "width": 1280,
         "height": 800,
         "minWidth": 1024,
         "minHeight": 768,
-        "center": true,
-        "resizable": true,
-        "fullscreen": false
+        "center": true
       }
-    ],
-    "security": {
-      "csp": null,
-      "assetProtocol": {
-        "enable": true,
-        "scope": ["**"]
-      }
-    }
-  },
-  "plugins": {
-    "shell": {
-      "open": true,
-      "sidecar": true,
-      "scope": [
-        {
-          "name": "binaries/python_backend",
-          "sidecar": true,
-          "args": []
-        },
-        {
-          "name": "binaries/ollama",
-          "sidecar": true,
-          "args": ["serve"]
-        }
-      ]
-    }
+    ]
   }
 }
