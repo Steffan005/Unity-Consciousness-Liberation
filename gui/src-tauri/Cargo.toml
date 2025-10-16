@@ -11,13 +11,14 @@ edition = "2021"
 tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-tauri = { version = "1.5", features = ["shell-open"] }
+tauri = { version = "1.5", features = ["shell-open", "shell-sidecar"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
 reqwest = { version = "0.11", features = ["json"] }
 sysinfo = "0.30"
 anyhow = "1.0"
+ureq = "2.9"  # For synchronous HTTP probing in preflight checks
 
 [features]
 default = ["custom-protocol"]

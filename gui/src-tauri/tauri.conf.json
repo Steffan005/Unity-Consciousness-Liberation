@@ -1,33 +1,57 @@
 {
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
     "devPath": "http://localhost:1420",
     "distDir": "../dist",
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "EvoAgentX",
-    "version": "0.1.0"
+    "productName": "Unity",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
       "all": false,
       "shell": {
         "all": false,
-        "open": true
+        "open": true,
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "binaries/python_backend",
+            "sidecar": true
+          },
+          {
+            "name": "binaries/ollama",
+            "sidecar": true,
+            "args": ["serve"]
+          }
+        ]
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
       }
     },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.evoagentx.gui",
+      "identifier": "ai.unity.local",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
+      ],
+      "externalBin": [
+        "binaries/python_backend",
+        "binaries/ollama"
+      ],
+      "resources": [
+        "resources/*"
       ]
     },
     "security": {
@@ -37,11 +61,12 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "EvoAgentX - Quantum Evolution Interface",
-        "width": 1400,
-        "height": 900,
+        "title": "Unity — Quantum Evolution Interface",
+        "width": 1280,
+        "height": 800,
         "minWidth": 1024,
-        "minHeight": 768
+        "minHeight": 768,
+        "center": true
       }
     ]
   }
