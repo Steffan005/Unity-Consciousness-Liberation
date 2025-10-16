@@ -171,11 +171,16 @@ if [ ! -d "node_modules" ]; then
     pnpm install
 fi
 
-# Replace main.rs with Unity version (if exists)
-if [ -f "src-tauri/src/main_unity.rs" ]; then
-    echo "   Using Unity main.rs (with sidecar orchestration)..."
-    cp "src-tauri/src/main_unity.rs" "src-tauri/src/main.rs"
+# Replace main.rs with Unity version (ALWAYS - required for sidecar orchestration)
+if [ ! -f "src-tauri/src/main_unity.rs" ]; then
+    echo "   ❌ ERROR: main_unity.rs not found!"
+    echo "   Unity orchestrator is missing - cannot build."
+    exit 1
 fi
+
+echo "   Replacing main.rs with Unity orchestrator (main_unity.rs)..."
+cp "src-tauri/src/main_unity.rs" "src-tauri/src/main.rs"
+echo "   ✅ main.rs updated with sidecar spawn logic"
 
 # Build with Tauri
 echo "   Running: pnpm tauri build"
