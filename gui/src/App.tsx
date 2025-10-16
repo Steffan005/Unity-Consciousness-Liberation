@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Dashboard } from "./pages/Dashboard";
 import { api } from "./lib/api";
 import "./App.css";
