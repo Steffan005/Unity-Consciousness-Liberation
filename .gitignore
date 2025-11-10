@@ -59,6 +59,11 @@ build/
 *.deb
 *.rpm
 
+# Large binaries (don't push to GitHub)
+gui/src-tauri/binaries/
+gui/src-tauri/target/
+*python_backend*
+
 # EvoAgentX specific
 *.jsonl
 memory_snapshot_*.json
